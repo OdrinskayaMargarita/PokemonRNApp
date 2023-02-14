@@ -6,8 +6,8 @@ import { FlatList, View } from 'react-native';
 import { tw } from '@lib/tailwind';
 
 import { getPokemonsList } from '../../actions/list.action';
-import { PurpleButton } from '../../components/CoreComponents/buttons';
-import { CircleWithIconButton } from '../../components/CoreComponents/buttons/circleWithIcon.button';
+import { CircleButton } from '../../components/CoreComponents/buttons/circle.button';
+import { DefaultButton } from '../../components/CoreComponents/buttons/default.button';
 import { TemplateContainer } from '../../components/CoreComponents/templates/template.container';
 import { TextDescription } from '../../components/CoreComponents/text/text-description';
 import { ItemComponent } from '../../components/item/item.component';
@@ -40,10 +40,7 @@ export const ListScreen = () => {
       options={{
         headerCenter: headerTitleLayouts('Your Pokemons'),
         headerRight: (
-          <CircleWithIconButton
-            onClick={() => navigation.navigate('SettingsScreen')}
-            icon="setting"
-          />
+          <CircleButton onClick={() => navigation.navigate('SettingsScreen')} icon="setting" />
         ),
       }}
     >
@@ -56,11 +53,12 @@ export const ListScreen = () => {
           onEndReachedThreshold={0.1}
           ListEmptyComponent={<TextDescription>Pokemons Not Found</TextDescription>}
           ListFooterComponent={
-            <PurpleButton
+            <DefaultButton
               title="Load More"
               onClick={loadMore}
               disabled={isButtonDisabled}
-            ></PurpleButton>
+              bgColor="bg-primary500"
+            ></DefaultButton>
           }
         />
       </View>

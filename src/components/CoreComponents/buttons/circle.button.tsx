@@ -7,7 +7,7 @@ import { tw } from '@lib/tailwind';
 
 import { IPropsCircleButton } from './types';
 
-export const CircleWithIconButton: FC<IPropsCircleButton> = ({ icon, onClick }) => {
+export const CircleButton: FC<IPropsCircleButton> = ({ icon, onClick }) => {
   const getIcon = () => {
     switch (icon) {
       case 'back':

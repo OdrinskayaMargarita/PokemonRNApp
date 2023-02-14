@@ -11,12 +11,13 @@ export interface IPropsButtons {
   sizeText?: string;
   disabled?: boolean;
   textColor?: string;
+  bgColor?: string;
+  isIcon?: boolean;
+  icon?: React.ReactNode;
+  isArrowEnd?: boolean;
+  isNotCentered?: boolean;
 }
 
 export interface IPropsCircleButton extends IPropsButtons {
-  icon: React.ReactNode;
-}
-
-export interface IPropsWithIconButtons extends IPropsButtons {
   icon: React.ReactNode;
 }

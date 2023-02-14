@@ -7,7 +7,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import { tw } from '@lib/tailwind';
 
-import { PurpleButton, PurpleNegativeButton } from '../../components/CoreComponents/buttons';
+import { DefaultButton } from '../../components/CoreComponents/buttons/default.button';
 import { InputDate } from '../../components/CoreComponents/form/input-date';
 import { TemplateContainer } from '../../components/CoreComponents/templates/template.container';
 import { headerTitleLayouts } from '../../navigation/header-navigation-tabs/header.navigation';
@@ -59,18 +59,20 @@ export const BirthdateScreen = () => {
         />
 
         <View style={tw`mt-4 flex-row justify-between`}>
-          <PurpleNegativeButton
+          <DefaultButton
             onClick={openDatePicker}
             title={'Select Date'}
             margin={'m-0'}
             maxWidth={'max-w-[48%]'}
+            bgColor="bg-primary700"
           />
-          <PurpleButton
+          <DefaultButton
             onClick={handleClick}
             title={'Continue'}
             disabled={isButtonDisabled}
             margin={'m-0'}
             maxWidth={'max-w-[48%]'}
+            bgColor="bg-primary500"
           />
         </View>
       </View>

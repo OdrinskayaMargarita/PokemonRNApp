@@ -1,25 +1,17 @@
-import axios from 'axios';
-
-import { baseUrl } from './config';
+import { instance } from './config';
 
 export const api = {
   getListPokemons() {
-    return axios({
+    return instance({
       method: 'get',
-      url: baseUrl + `pokemon/?offset=0&limit=1279`,
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-      },
+      url: `pokemon/?offset=0&limit=1279`,
     }).catch((error) => error);
   },
 
   getOnePokemon(name) {
-    return axios({
+    return instance({
       method: 'get',
-      url: baseUrl + `pokemon/${name}`,
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-      },
+      url: `pokemon/${name}`,
     }).catch((error) => error);
   },
 };

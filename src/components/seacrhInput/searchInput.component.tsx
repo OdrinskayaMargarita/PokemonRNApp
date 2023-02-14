@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { View } from 'react-native';
 
@@ -6,7 +6,7 @@ import { tw } from '@lib/tailwind';
 
 import { filterList, resetFilter } from '../../reducers/pokemons.slice';
 import { useAppDispatch } from '../../store/configureStore';
-import { PurpleButton, PurpleNegativeButton } from '../CoreComponents/buttons';
+import { DefaultButton } from '../CoreComponents/buttons/default.button';
 import { InputComponent } from '../CoreComponents/form/input-component';
 
 export const SearchInputComponent = () => {
@@ -29,8 +29,10 @@ export const SearchInputComponent = () => {
   return (
     <View style={tw`mb-5`}>
       <InputComponent value={valueInput} onChange={setValueInput} placeholder="Search" />
-      <PurpleButton onClick={handleClick} title="Search" />
-      {valueInput.length ? <PurpleNegativeButton onClick={handleClear} title="Reset" /> : null}
+      <DefaultButton title="Search" onClick={handleClick} bgColor="bg-primary500"></DefaultButton>
+      {valueInput.length ? (
+        <DefaultButton onClick={handleClear} title="Reset" bgColor="bg-primary700" />
+      ) : null}
     </View>
   );
 };

@@ -7,8 +7,8 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import { tw } from '@lib/tailwind';
 
-import { PurpleButton, PurpleNegativeButton } from '../../components/CoreComponents/buttons';
-import { CircleWithIconButton } from '../../components/CoreComponents/buttons/circleWithIcon.button';
+import { CircleButton } from '../../components/CoreComponents/buttons/circle.button';
+import { DefaultButton } from '../../components/CoreComponents/buttons/default.button';
 import { InputDate } from '../../components/CoreComponents/form/input-date';
 import { TemplateContainer } from '../../components/CoreComponents/templates/template.container';
 import { headerTitleLayouts } from '../../navigation/header-navigation-tabs/header.navigation';
@@ -48,7 +48,7 @@ export const BirthdateChangeScreen = () => {
     <TemplateContainer
       options={{
         headerCenter: headerTitleLayouts('BirthdateScreen'),
-        headerLeft: <CircleWithIconButton onClick={() => navigation.goBack()} icon="back" />,
+        headerLeft: <CircleButton onClick={() => navigation.goBack()} icon="back" />,
       }}
     >
       <View style={tw`h-full`}>
@@ -63,18 +63,20 @@ export const BirthdateChangeScreen = () => {
         />
 
         <View style={tw`mt-4 flex-row justify-between`}>
-          <PurpleNegativeButton
+          <DefaultButton
             onClick={openDatePicker}
             title={'Select Date'}
             margin={'m-0'}
             maxWidth={'max-w-[48%]'}
+            bgColor={'bg-primary700'}
           />
-          <PurpleButton
+          <DefaultButton
             onClick={handleClick}
             title={'Save'}
             disabled={isButtonDisabled}
             margin={'m-0'}
             maxWidth={'max-w-[48%]'}
+            bgColor={'bg-primary500'}
           />
         </View>
       </View>

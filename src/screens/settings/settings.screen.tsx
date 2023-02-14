@@ -2,16 +2,11 @@ import React, { useState } from 'react';
 
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text } from 'react-native';
 
-import { tw } from '@lib/tailwind';
-
-import { PurpleNegativeButton } from '../../components/CoreComponents/buttons';
-import { CircleWithIconButton } from '../../components/CoreComponents/buttons/circleWithIcon.button';
-import { RedButton } from '../../components/CoreComponents/buttons/red.button';
-import { WithIconButton } from '../../components/CoreComponents/buttons/withIcon.button';
-import { TemplateModalNotFully } from '../../components/CoreComponents/templates/modal/template-modal-not-fully.component';
+import { CircleButton } from '../../components/CoreComponents/buttons/circle.button';
+import { DefaultButton } from '../../components/CoreComponents/buttons/default.button';
 import { TemplateContainer } from '../../components/CoreComponents/templates/template.container';
+import { LogOutModal } from '../../components/modalLogout/logout.modal';
 import { headerTitleLayouts } from '../../navigation/header-navigation-tabs/header.navigation';
 import { clearAuthData } from '../../reducers/auth.slice';
 import { useAppDispatch } from '../../store/configureStore';
@@ -39,41 +34,34 @@ export const SettingsScreen = () => {
     <TemplateContainer
       options={{
         headerCenter: headerTitleLayouts('Settings'),
-        headerLeft: <CircleWithIconButton onClick={() => navigation.goBack()} icon="back" />,
+        headerLeft: <CircleButton onClick={() => navigation.goBack()} icon="back" />,
       }}
     >
-      <WithIconButton
+      <DefaultButton
+        isNotCentered={true}
+        isArrowEnd={true}
+        isIcon={true}
         onClick={() => navigation.navigate('UsernameChangeScreen')}
         title={'Change User Name'}
         icon={<Ionicons name="person-outline" size={20} color="white" />}
         margin="mb-4"
       />
-      <WithIconButton
+      <DefaultButton
+        isNotCentered={true}
+        isArrowEnd={true}
+        isIcon={true}
         onClick={() => navigation.navigate('BirthdateChangeScreen')}
         title={'Change Birthday'}
         icon={<AntDesign name="calendar" size={20} color="white" />}
         margin="mb-20"
       />
-      <RedButton title={'Logout'} onClick={openModal} />
+      <DefaultButton title={'Logout'} onClick={openModal} bgColor={'bg-error500'} />
 
-      <TemplateModalNotFully
-        alignModal={'end'}
-        isVisible={isModalVisible}
-        onOverlayTap={closeModal}
-      >
-        <View style={tw`py-12 px-5 bg-indigo rounded-t-[20px]`}>
-          <View style={tw`flex items-center w-full relative mb-8`}>
-            <Text style={tw`text-2xl text-white font-primary-semi-bold mb-5`}>Logging out</Text>
-            <Text style={tw`font-primary-medium text-white text-center`}>
-              Are you sure you want to log out of your current Guardian profile?
-            </Text>
-          </View>
-          <View style={tw`flex w-full relative mb-8`}>
-            <RedButton title={'Log out'} onClick={handleLogout} />
-            <PurpleNegativeButton onClick={closeModal} title={'Back'} />
-          </View>
-        </View>
-      </TemplateModalNotFully>
+      <LogOutModal
+        isModalVisible={isModalVisible}
+        handleLogout={handleLogout}
+        closeModal={closeModal}
+      />
     </TemplateContainer>
   );
 };

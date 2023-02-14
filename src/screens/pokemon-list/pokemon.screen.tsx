@@ -5,7 +5,7 @@ import { View, Text, Image } from 'react-native';
 
 import { tw } from '@lib/tailwind';
 
-import { CircleWithIconButton } from '../../components/CoreComponents/buttons/circleWithIcon.button';
+import { CircleButton } from '../../components/CoreComponents/buttons/circle.button';
 import { TemplateContainerScroll } from '../../components/CoreComponents/templates/template.container-scroll';
 import { TextDescription } from '../../components/CoreComponents/text/text-description';
 import { headerTitleLayouts } from '../../navigation/header-navigation-tabs/header.navigation';
@@ -30,12 +30,9 @@ export const PokemonScreen = () => {
     <TemplateContainerScroll
       options={{
         headerCenter: headerTitleLayouts(activePokemon.name),
-        headerLeft: <CircleWithIconButton onClick={() => navigation.goBack()} icon="back" />,
+        headerLeft: <CircleButton onClick={() => navigation.goBack()} icon="back" />,
         headerRight: (
-          <CircleWithIconButton
-            onClick={() => navigation.navigate('SettingsScreen')}
-            icon="setting"
-          />
+          <CircleButton onClick={() => navigation.navigate('SettingsScreen')} icon="setting" />
         ),
       }}
     >

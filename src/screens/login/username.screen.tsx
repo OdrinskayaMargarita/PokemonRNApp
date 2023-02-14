@@ -5,7 +5,7 @@ import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 
 import { tw } from '@lib/tailwind';
 
-import { PurpleButton } from '../../components/CoreComponents/buttons';
+import { DefaultButton } from '../../components/CoreComponents/buttons/default.button';
 import { InputComponent } from '../../components/CoreComponents/form/input-component';
 import { TemplateContainer } from '../../components/CoreComponents/templates/template.container';
 import { headerTitleLayouts } from '../../navigation/header-navigation-tabs/header.navigation';
@@ -40,11 +40,12 @@ export const UsernameScreen = () => {
             description={'A-Z a-z 0-9 Space'}
           />
 
-          <PurpleButton
+          <DefaultButton
             onClick={handleClick}
             title={'Continue'}
             disabled={isButtonDisabled}
             margin={'mt-4'}
+            bgColor={'bg-primary500'}
           />
         </View>
       </TouchableWithoutFeedback>
